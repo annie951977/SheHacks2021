@@ -17,7 +17,7 @@ class _SignUpState extends State<SignUp> {
  checkAuthentication() async {
 
     // ignore: deprecated_member_use
-    _auth.onAuthStateChanged.listen((user) async 
+    _auth.authStateChanges().listen((user) async 
     {
       if(user != null)
       {
@@ -42,12 +42,10 @@ class _SignUpState extends State<SignUp> {
      _formKey.currentState.save();
 
      try{
-       FireUser user = await _auth.createUserWithEmailAndPassword(email: _email, password: _password);
+       UserCredential user = await _auth.createUserWithEmailAndPassword(email: _email, password: _password);
        if(user!= null) 
        {
-          UserUpdateInfo updateuser = UserUpdateInfo();
-          updateuser.displayName = _name;
-           user.updateProfile(updateuser);
+          await _auth.currentUser.updateProfile(displayName: _name);
        }
      }
      catch(e){

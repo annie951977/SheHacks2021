@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
   {
    
    // ignore: deprecated_member_use
-   _auth.onAuthStateChanged.listen((user) { 
+   _auth.authStateChanges().listen((user) { 
 
     if(user!= null)
     {
@@ -50,7 +50,8 @@ class _LoginState extends State<Login> {
       _formKey.currentState.save();
 
       try{
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
+        // ignore: deprecated_member_use
+        UserCredential user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
       }
 
       catch(e)
@@ -115,7 +116,7 @@ class _LoginState extends State<Login> {
               Container(
 
                 height: 400,
-                child: Image(image: AssetImage("images/login.jpg"),
+                child: Image(image: AssetImage("images/12-120520_captain-marvel-clipart-clip-art-captain-marvel-clipart.png"),
                 fit: BoxFit.contain,
                 ),
               ),
@@ -159,7 +160,7 @@ class _LoginState extends State<Login> {
                          {
                             if(input.length < 6)
 
-                            return 'Provide Minimum 6 Character';
+                            return 'Provide a Minimum of 6 Characters';
                          },
 
                             decoration: InputDecoration(

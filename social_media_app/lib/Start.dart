@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:social_media_app/login.dart';
+import 'package:social_media_app/Login.dart';
 import 'SignUp.dart';
 
 

@@ -10,13 +10,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  FirebaseUser user;
+  User user;
   bool isloggedin= false;
 
 
   checkAuthentification() async{
 
-    _auth.onAuthStateChanged.listen((user) { 
+    _auth.authStateChanges().listen((user) { 
 
       if(user ==null)
       {
@@ -27,9 +27,9 @@ class _HomePageState extends State<HomePage> {
 
   getUser() async{
 
-    FirebaseUser firebaseUser = await _auth.currentUser();
+    User firebaseUser = _auth.currentUser;
     await firebaseUser?.reload();
-    firebaseUser = await _auth.currentUser();
+    firebaseUser = _auth.currentUser;
 
     if(firebaseUser !=null)
     {
