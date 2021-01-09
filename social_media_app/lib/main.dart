@@ -18,7 +18,24 @@ class MyApp extends StatelessWidget{
     );
   }
 }
+/*
+ void _addMessage(String value) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await widget.store.add({
+        'author': user.displayName ?? 'Anonymous',
+        'author_id': user.uid,
+        'photo_url': user.photoURL ?? 'https://placehold.it/100x100',
+        'timestamp': Timestamp.now().millisecondsSinceEpoch,
+        'value': value,
+      });
+    }
+  }
 
+  void _deleteMessage(String docId) async {
+    await widget.store.doc(docId).delete();
+  }
+  */
 // class MyApp extends StatelessWidget {
 //   // This widget is the root of your application.
 //   @override
