@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'chat_message_other.dart';
-import 'chat_message.dart';
+import 'chat_other.dart';
+import 'chat.dart';
 
 class MessageWall extends StatelessWidget {
   final List<QueryDocumentSnapshot> messages;
