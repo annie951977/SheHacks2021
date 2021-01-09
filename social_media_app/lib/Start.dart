@@ -4,6 +4,17 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:social_media_app/Login.dart';
 import 'SignUp.dart';
 
+extension ColorExtension on String {
+  toColor() {
+    var hexColor = this.replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    if (hexColor.length == 8) {
+      return Color(int.parse("0x$hexColor"));
+    }
+  }
+} // https://flutterigniter.com/using-hexadecimal-color-strings/
 
 class Start extends StatefulWidget {
   @override
@@ -24,7 +35,7 @@ class _StartState extends State<Start> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: "#5556F6".toColor(),
       body: Container(
         child: Column(
           children: <Widget>[
@@ -40,82 +51,57 @@ class _StartState extends State<Start> {
             ),
 
             SizedBox(height : 20),
-
-            RichText(
-              
-              text: TextSpan(
-                text: 'Welcome to ', style: TextStyle(
-                 fontSize: 25.0,
-                 fontWeight: FontWeight.bold,
-                 color: Colors.black
-                ),
-
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'X Groceries', style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
-                    color:Colors.orange)
-                  )
-                ]
-              ) 
-            ),
             SizedBox(height: 10.0),
 
-            Text('Fresh Groceries Delivered at your Doorstep',style: TextStyle(color:Colors.black),),
+            Text('Connect. Network. Mentor',style: TextStyle(color:Colors.white),),
 
-            SizedBox(height: 30.0),
+            SizedBox(height: 70),
 
 
-            Row( mainAxisAlignment: MainAxisAlignment.center,
-
+            Column( mainAxisAlignment: MainAxisAlignment.center,
+                
               children: <Widget>[
-
+                
                 RaisedButton(
-                  padding: EdgeInsets.only(left:30,right:30),
+                  padding: EdgeInsets.only(left:100,right:100),
                   
                   onPressed: navigateToLogin,
-                  child: Text('LOGIN',style: TextStyle(
+                  child: Text('Login',style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                   ),),
 
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  color: Colors.orange
+                  color: Colors.white
                 ),
 
                 SizedBox(width:20.0),
 
-                RaisedButton(
-                  padding: EdgeInsets.only(left:30,right:30),
-                  
+                TextButton(
+                
                   onPressed: navigateToRegister,
-                  child: Text('REGISTER',style: TextStyle(
+                  child: Text('Sign Up',style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                   ),),
 
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  color: Colors.orange
-                ),
+                )
 
               ],
             ),
 
             
-                SizedBox(height : 20.0),
+                // SizedBox(height : 20.0),
 
-                SignInButton(
-                Buttons.Google,
-                text: "Sign up with Google",
-                onPressed: () {},
-             )
+                // SignInButton(
+                // Buttons.Google,
+                // text: "Sign up with Google",
+                // onPressed: () {},
+             
           ],
         ),
       ),
