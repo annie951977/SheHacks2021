@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "300074409652",
+    "project_id": "shehacks2021-250da",
+    "storage_bucket": "shehacks2021-250da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300074409652:android:6efac7e8ff36b6773a01e1",
+        "android_client_info": {
+          "package_name": "com.example.social_media_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300074409652-7a1cud2nt497l7lelcsudr6e4bu1ibf8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.social_media_app",
+            "certificate_hash": "30170654de3f9cc561d738573055085be2bf79a7"
+          }
+        },
+        {
+          "client_id": "300074409652-ordbe1pga2tvf99liriv2ocrl29s5clg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbeCa3r1j_B_fNZ-ZvSrjpZkMqYqBi9TQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300074409652-ordbe1pga2tvf99liriv2ocrl29s5clg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
