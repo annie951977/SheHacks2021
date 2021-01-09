@@ -1,67 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:social_media_app/HomePage.dart';
-import 'SignUp.dart';
+import 'HomePage.dart';
 
-class Login extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
 
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+ FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String _email, _password;
+ String _name, _email, _password;
 
-  checkAuthentification() async
-  {
-   
-   // ignore: deprecated_member_use
-   _auth.onAuthStateChanged.listen((user) { 
+ checkAuthentication() async {
 
-    if(user!= null)
+    // ignore: deprecated_member_use
+    _auth.onAuthStateChanged.listen((user) async 
     {
-      print(user);
-
-      Navigator.push(context, MaterialPageRoute(
+      if(user != null)
+      {
+       Navigator.push(context, MaterialPageRoute(
         
         builder: (context)=>HomePage()));
     }
-
-   });
-
-  
-
-  }
-       @override
-   void initState()
-   {
-     super.initState();
-     this.checkAuthentification();
-   }
-  login()async
-  {
-    if(_formKey.currentState.validate())
-    {
-      
-      _formKey.currentState.save();
-
-      try{
-        FirebaseUser user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
-      }
-
-      catch(e)
-      {
-        showError(e.message);
-        print(e);
-      }
-
     }
+    );
   }
 
+  @override
+  void initState(){
+    super.initState();
+    this.checkAuthentication();
+  }
+
+  signUp()async{
+
+   if(_formKey.currentState.validate())
+   {
+     _formKey.currentState.save();
+
+     try{
+       FireUser user = await _auth.createUserWithEmailAndPassword(email: _email, password: _password);
+       if(user!= null) 
+       {
+          UserUpdateInfo updateuser = UserUpdateInfo();
+          updateuser.displayName = _name;
+           user.updateProfile(updateuser);
+       }
+     }
+     catch(e){
+       
+       showError(e.message);
+       print(e);
+     }
+   }
+     
+  }
   showError(String errormessage){
 
    showDialog(
@@ -90,13 +86,6 @@ class _LoginState extends State<Login> {
    
    );
 
-  }
-
-  navigateToSignUp()async
-  {
-
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
-    
   }
 
 
@@ -128,6 +117,30 @@ class _LoginState extends State<Login> {
                  child: Column(
 
                    children: <Widget>[
+
+                     Container(
+
+                       child: TextFormField(
+
+                         validator: (input)
+                         {
+                            if(input.isEmpty)
+
+                            return 'Enter Name';
+                         },
+
+                            decoration: InputDecoration(
+
+                              labelText: 'Name',
+                              prefixIcon:Icon(Icons.person),
+                            ),
+
+
+                            onSaved: (input) => _name = input
+
+                         
+                       ),
+                     ),
 
                      Container(
 
@@ -179,8 +192,8 @@ class _LoginState extends State<Login> {
 
                      RaisedButton(
                        padding: EdgeInsets.fromLTRB(70,10,70,10),
-                      onPressed: login,
-                      child: Text('LOGIN',style: TextStyle(
+                      onPressed: signUp,
+                      child: Text('SignUp',style: TextStyle(
 
                       color: Colors.white,
                       fontSize: 20.0,
@@ -200,11 +213,6 @@ class _LoginState extends State<Login> {
 
                 ),
               ),
-
-              GestureDetector(
-                child: Text('Create an Account?'),
-                onTap: navigateToSignUp,
-              )
             ],
           ),
         ),

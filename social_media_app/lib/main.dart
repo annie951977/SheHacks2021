@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'HomePage.dart';
+import 'Start.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       theme: ThemeData(
         primaryColor: Colors.white),
-        home: HomePage(),
+        home: Start(),
     );
   }
 }
