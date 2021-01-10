@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:social_media_app/HomePage.dart';
 import 'SignUp.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -19,7 +21,6 @@ class _LoginState extends State<Login> {
   checkAuthentification() async
   {
    
-   // ignore: deprecated_member_use
    _auth.authStateChanges().listen((user) { 
 
     if(user!= null)
@@ -50,7 +51,7 @@ class _LoginState extends State<Login> {
       _formKey.currentState.save();
 
       try{
-        // ignore: deprecated_member_use
+      
         UserCredential user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
       }
 
@@ -105,29 +106,29 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: const Color(0xff5556F6),
       body: SingleChildScrollView(
               child: Container(
 
           child: Column(
-
+           
             children: <Widget>[
 
               Container(
 
                 height: 400,
-                child: Image(image: AssetImage("images/12-120520_captain-marvel-clipart-clip-art-captain-marvel-clipart.png"),
-                fit: BoxFit.contain,
+                child: Image(image: AssetImage("images/logo1.png"),
+                // fit: BoxFit.contain,
                 ),
               ),
-
+          
               Container(
 
                 child: Form(
    
                  key: _formKey,
                  child: Column(
-
+                  
                    children: <Widget>[
 
                      Container(
@@ -181,15 +182,15 @@ class _LoginState extends State<Login> {
                      RaisedButton(
                        padding: EdgeInsets.fromLTRB(70,10,70,10),
                       onPressed: login,
-                      child: Text('LOGIN',style: TextStyle(
+                      child: Text('Login',style: TextStyle(
 
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold
                       
                       )),
 
-                      color: Colors.orange,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
 
                         borderRadius: BorderRadius.circular(20.0),
@@ -202,6 +203,11 @@ class _LoginState extends State<Login> {
                 ),
               ),
 
+                SignInButton(
+                Buttons.Google,
+                text: "Sign in with Google",
+                onPressed: () {},
+                ),
               GestureDetector(
                 child: Text('Create an Account?'),
                 onTap: navigateToSignUp,

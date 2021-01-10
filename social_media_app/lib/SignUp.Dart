@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'HomePage.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _SignUpState extends State<SignUp> {
 
  checkAuthentication() async {
 
-    // ignore: deprecated_member_use
+
     _auth.authStateChanges().listen((user) async 
     {
       if(user != null)
@@ -91,7 +92,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: const Color(0xff5556F6),
       body: SingleChildScrollView(
               child: Container(
 
@@ -102,11 +103,17 @@ class _SignUpState extends State<SignUp> {
               Container(
 
                 height: 400,
-                child: Image(image: AssetImage("images/login.jpg"),
+                child: Image(image: AssetImage("images/logo1.png"),
                 fit: BoxFit.contain,
                 ),
               ),
+              RichText(
+              text: TextSpan(
+              text: 'Register',
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black,),
 
+              ),
+                ),
               Container(
 
                 child: Form(
@@ -191,7 +198,7 @@ class _SignUpState extends State<SignUp> {
                      RaisedButton(
                        padding: EdgeInsets.fromLTRB(70,10,70,10),
                       onPressed: signUp,
-                      child: Text('SignUp',style: TextStyle(
+                      child: Text('Sign Up',style: TextStyle(
 
                       color: Colors.white,
                       fontSize: 20.0,
@@ -199,7 +206,7 @@ class _SignUpState extends State<SignUp> {
                       
                       )),
 
-                      color: Colors.orange,
+                      color: const Color(0xff74D4DD),
                       shape: RoundedRectangleBorder(
 
                         borderRadius: BorderRadius.circular(20.0),
@@ -211,9 +218,16 @@ class _SignUpState extends State<SignUp> {
 
                 ),
               ),
-            ],
+              SizedBox(height:20),
+              SignInButton(
+                Buttons.Google,
+                text: "Sign up with Google",
+                onPressed: () {},
+                ),
+          ],
           ),
         ),
+        
       )
       
     );

@@ -16,6 +16,7 @@ extension ColorExtension on String {
   }
 } // https://flutterigniter.com/using-hexadecimal-color-strings/
 
+
 class Start extends StatefulWidget {
   @override
   _StartState createState() => _StartState();
@@ -32,33 +33,58 @@ class _StartState extends State<Start> {
 
     Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUp()));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: "#5556F6".toColor(),
+      backgroundColor: "#5556F7".toColor(),
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
 
             SizedBox(height: 35.0),
 
+            
             Container(
               height: 400,
 
-              child: Image(image: AssetImage("images/12-120520_captain-marvel-clipart-clip-art-captain-marvel-clipart.png"),
+              child: Image(image: AssetImage("images/logo1.png",
+              ),
               fit: BoxFit.contain,
               ),
             ),
 
             SizedBox(height : 20),
-            SizedBox(height: 10.0),
+          // Container(
+          //     child:  Column(
+          //       children: <Widget>[
+          //          Row(
+          //           children: <Widget>[
+          //              Container(
+          //               child: Image.asset(
+          //                 'images/woman1.png',
+          //                 fit: BoxFit.cover,
+          //               ),
+          //             ),
+          //             Container(
+          //               child: Image.asset("images/woman2.png",
+          //              fit: BoxFit.cover,),
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     ),
 
-            Text('Connect. Network. Mentor',style: TextStyle(color:Colors.white),),
+          //      ),
 
             SizedBox(height: 70),
 
 
-            Column( mainAxisAlignment: MainAxisAlignment.center,
+            Column( 
+             mainAxisAlignment: MainAxisAlignment.center,
+             crossAxisAlignment: CrossAxisAlignment.center,
                 
               children: <Widget>[
                 
@@ -87,6 +113,7 @@ class _StartState extends State<Start> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
+                  decoration: TextDecoration.underline,
                   ),),
 
                 )
