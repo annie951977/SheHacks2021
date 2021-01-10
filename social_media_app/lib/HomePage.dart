@@ -66,22 +66,27 @@ class _HomePageState extends State<HomePage> {
 
            Container(
 
-            height: 300,
-            child: Image(image: AssetImage("images/welcome.jpg"),
+            height: 550,
+            child: Image(image: AssetImage("images/sample.png"),
             fit: BoxFit.contain,
           ),
         ),     
-            Container(
-              child: Text("Hello ${user.displayName} you are Logged in as ${user.email}",
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold
-              ),),
-            ),
+            // Container(
+            //   child: Text("Hello ${user.displayName} you are Logged in as ${user.email}",
+            //   style: TextStyle(
+            //     fontSize: 20.0,
+            //     fontWeight: FontWeight.bold
+            //   ),),
+            // ),
+          Container(
+              child:  Column(
+                children: <Widget>[
+                   Row(
+                    children: <Widget>[
+                       Container(
+                         child: RaisedButton(
 
-            RaisedButton(
-
-               padding: EdgeInsets.fromLTRB(70,10,70,10),
+               padding: EdgeInsets.fromLTRB(60,10,60,10),
                       onPressed: signOut,
                       child: Text('Signout',style: TextStyle(
 
@@ -91,12 +96,41 @@ class _HomePageState extends State<HomePage> {
                       
                       )),
 
-                      color: Colors.orange,
+                      color: const Color(0xff5556F6),
                       shape: RoundedRectangleBorder(
 
                         borderRadius: BorderRadius.circular(20.0),
                       ),
             )
+                      ),
+                      Container(
+                        child:  RaisedButton(
+
+               padding: EdgeInsets.fromLTRB(60,10,60,10),
+                      onPressed: signOut,
+                      child: Text('Message',style: TextStyle(
+
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold
+                      
+                      )),
+
+                      color: const Color(0xff5556F6),
+                      shape: RoundedRectangleBorder(
+
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+            )
+                       
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+               ),
+           
         ],
        ),
      )
