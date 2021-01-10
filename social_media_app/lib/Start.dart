@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:social_media_app/Login.dart';
 import 'SignUp.dart';
 
@@ -57,27 +56,7 @@ class _StartState extends State<Start> {
             ),
 
             SizedBox(height : 20),
-          // Container(
-          //     child:  Column(
-          //       children: <Widget>[
-          //          Row(
-          //           children: <Widget>[
-          //              Container(
-          //               child: Image.asset(
-          //                 'images/woman1.png',
-          //                 fit: BoxFit.cover,
-          //               ),
-          //             ),
-          //             Container(
-          //               child: Image.asset("images/woman2.png",
-          //              fit: BoxFit.cover,),
-          //             ),
-          //           ],
-          //         ),
-          //       ],
-          //     ),
-
-          //      ),
+ 
 
             SizedBox(height: 70),
 

@@ -71,13 +71,6 @@ class _HomePageState extends State<HomePage> {
             fit: BoxFit.contain,
           ),
         ),     
-            // Container(
-            //   child: Text("Hello ${user.displayName} you are Logged in as ${user.email}",
-            //   style: TextStyle(
-            //     fontSize: 20.0,
-            //     fontWeight: FontWeight.bold
-            //   ),),
-            // ),
           Container(
               child:  Column(
                 children: <Widget>[
@@ -107,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         child:  RaisedButton(
 
                padding: EdgeInsets.fromLTRB(60,10,60,10),
-                      onPressed: signOut,
+                      onPressed: signOut, // TODO: add message 
                       child: Text('Message',style: TextStyle(
 
                       color: Colors.white,
