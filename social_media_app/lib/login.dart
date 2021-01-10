@@ -202,12 +202,13 @@ class _LoginState extends State<Login> {
 
                 ),
               ),
-
+                SizedBox(height : 20),
                 SignInButton(
                 Buttons.Google,
                 text: "Sign in with Google",
                 onPressed: () {},
                 ),
+                SizedBox(height : 20),
               GestureDetector(
                 child: Text('Create an Account?'),
                 onTap: navigateToSignUp,
