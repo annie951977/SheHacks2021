@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_app/Start.dart';
-
+import 'messaging/form.dart';
+import 'messaging/wall.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -51,6 +52,19 @@ class _HomePageState extends State<HomePage> {
     this.checkAuthentification();
     this.getUser();
   }
+   void addMessage(String value) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await widget.store.add({
+        'author': user.displayName ?? 'Anonymous',
+        'author_id': user.uid,
+        'photo_url': user.photoURL ?? 'https://placehold.it/100x100',
+        'timestamp': Timestamp.now().millisecondsSinceEpoch,
+        'value': value,
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +114,11 @@ class _HomePageState extends State<HomePage> {
                         child:  RaisedButton(
 
                padding: EdgeInsets.fromLTRB(60,10,60,10),
-                      onPressed: signOut, // TODO: add message 
+                      onPressed: signOut, // TODO: add message
+                          if (signOut)
+            MessageForm(
+              onSubmit: addMessage,
+            )
                       child: Text('Message',style: TextStyle(
 
                       color: Colors.white,
